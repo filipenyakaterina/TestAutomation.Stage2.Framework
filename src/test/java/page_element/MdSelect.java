@@ -22,6 +22,7 @@ public class MdSelect {
     private void findSelectOption(String optionText) {
         String elementXpath = "//div[@class = 'md-select-menu-container md-active md-clickable']//div[contains(text(),'" + optionText + "')]";
 
+        Waiter.waitUntilElementAppears(By.xpath(elementXpath));
         optionDiv = select.findElement(By.xpath(elementXpath));
         option = select.findElement(By.xpath(elementXpath + "/ancestor::md-option"));
     }
