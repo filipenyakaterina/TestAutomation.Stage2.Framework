@@ -11,10 +11,11 @@ public class Instance {
     private String localSSD;
     private String datacenterLocation;
     private String committedUsage;
+    private String estimateCost;
 
     public Instance(String numberOfInstances, String purposeOfUse, String operatingSystem, String machineClass,
                     String machineType, String numberOfGPUs, String typeOfGPUs, String localSSD,
-                    String datacenterLocation, String committedUsage) {
+                    String datacenterLocation, String committedUsage, String estimateCost) {
         this.numberOfInstances = numberOfInstances;
         this.purposeOfUse = purposeOfUse;
         this.operatingSystem = operatingSystem;
@@ -25,6 +26,7 @@ public class Instance {
         this.localSSD = localSSD;
         this.datacenterLocation = datacenterLocation;
         this.committedUsage = committedUsage;
+        this.estimateCost = estimateCost;
     }
 
     public String getNumberOfInstances() {
@@ -65,5 +67,9 @@ public class Instance {
 
     public String getCommittedUsage() {
         return committedUsage;
+    }
+
+    public String getEstimateCost() {
+        return estimateCost;
     }
 }
