@@ -1,6 +1,6 @@
 package page;
 
-import data_entity.InstancesData;
+import model.Instance;
 import helper.Executor;
 import helper.Waiter;
 import org.openqa.selenium.WebDriver;
@@ -55,22 +55,22 @@ public class ComputeEnginePage extends AbstractPage {
         throw new RuntimeException("Cannot open compute engine page without selection Compute Engine tab.");
     }
 
-    public GoogleCloudPlatformPricingCalculatorPage fillComputeEngineForm(InstancesData instancesData) {
-        numberOfInstances.sendKeys(instancesData.getNumberOfInstances());
-        purposeOfUse.sendKeys(instancesData.getPurposeOfUse());
+    public GoogleCloudPlatformPricingCalculatorPage fillComputeEngineForm(Instance instance) {
+        numberOfInstances.sendKeys(instance.getNumberOfInstances());
+        purposeOfUse.sendKeys(instance.getPurposeOfUse());
 
-        new MdSelect(operatingSystem).selectByValue(instancesData.getOperatingSystem());
-        new MdSelect(machineClass).selectByValue(instancesData.getMachineClass());
-        new MdSelect(machineType).selectByValue(instancesData.getMachineType());
+        new MdSelect(operatingSystem).selectByValue(instance.getOperatingSystem());
+        new MdSelect(machineClass).selectByValue(instance.getMachineClass());
+        new MdSelect(machineType).selectByValue(instance.getMachineType());
 
         Executor.clickElement(addGPUs);
         Waiter.waitUntilElementToBeVisible(numberOfGPUs);
-        new MdSelect(numberOfGPUs).selectByValue(instancesData.getNumberOfGPUs());
-        new MdSelect(typeOfGPUs).selectByValue(instancesData.getTypeOfGPUs());
+        new MdSelect(numberOfGPUs).selectByValue(instance.getNumberOfGPUs());
+        new MdSelect(typeOfGPUs).selectByValue(instance.getTypeOfGPUs());
 
-        new MdSelect(localSSD).selectByValue(instancesData.getLocalSSD());
-        new MdSelect(datacenterLocation).selectByValue(instancesData.getDatacenterLocation());
-        new MdSelect(committedUsage).selectByValue(instancesData.getCommittedUsage());
+        new MdSelect(localSSD).selectByValue(instance.getLocalSSD());
+        new MdSelect(datacenterLocation).selectByValue(instance.getDatacenterLocation());
+        new MdSelect(committedUsage).selectByValue(instance.getCommittedUsage());
 
         return new GoogleCloudPlatformPricingCalculatorPage(driver);
     }

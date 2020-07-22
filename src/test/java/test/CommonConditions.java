@@ -1,6 +1,6 @@
 package test;
 
-import data_entity.InstancesData;
+import model.Instance;
 import driver.DriverSingleton;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -20,7 +20,7 @@ public class CommonConditions {
     @DataProvider
     public Object[][] testData() {
         return new Object[][]{
-                new Object[]{new InstancesData("4", "",
+                new Object[]{new Instance("4", "",
                         "Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS", "Regular",
                         "n1-standard-8 (vCPUs: 8, RAM: 30GB)", "1", "NVIDIA Tesla V100",
                         "2x375 GB", "Frankfurt (europe-west3)", "1 Year")},

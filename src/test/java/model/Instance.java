@@ -1,6 +1,6 @@
-package data_entity;
+package model;
 
-public class InstancesData {
+public class Instance {
     private String numberOfInstances;
     private String purposeOfUse;
     private String operatingSystem;
@@ -12,9 +12,9 @@ public class InstancesData {
     private String datacenterLocation;
     private String committedUsage;
 
-    public InstancesData(String numberOfInstances, String purposeOfUse, String operatingSystem, String machineClass,
-                         String machineType, String numberOfGPUs, String typeOfGPUs, String localSSD,
-                         String datacenterLocation, String committedUsage) {
+    public Instance(String numberOfInstances, String purposeOfUse, String operatingSystem, String machineClass,
+                    String machineType, String numberOfGPUs, String typeOfGPUs, String localSSD,
+                    String datacenterLocation, String committedUsage) {
         this.numberOfInstances = numberOfInstances;
         this.purposeOfUse = purposeOfUse;
         this.operatingSystem = operatingSystem;
