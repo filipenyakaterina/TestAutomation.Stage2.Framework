@@ -10,6 +10,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -44,7 +45,7 @@ public class TestListener implements ITestListener {
 
     }
 
-    private void saveScreenshot(){
+    private void saveScreenshot() {
         File screenCapture = ((TakesScreenshot) DriverSingleton
                 .getDriver())
                 .getScreenshotAs(OutputType.FILE);
