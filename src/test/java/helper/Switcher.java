@@ -2,8 +2,6 @@ package helper;
 
 import org.openqa.selenium.WebDriver;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.Set;
 
 public class Switcher extends Helper {
@@ -17,17 +15,7 @@ public class Switcher extends Helper {
     }
 
     public static void openNewTab() {
-        Robot r;
-        try {
-            r = new Robot();
-            r.keyPress(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_T);
-            r.keyRelease(KeyEvent.VK_CONTROL);
-            r.keyRelease(KeyEvent.VK_T);
-        } catch (AWTException | NullPointerException e) {
-            e.printStackTrace();
-        }
-
+        Executor.openNewTab();
     }
 
     private static void switchToTab(Boolean isNew) {

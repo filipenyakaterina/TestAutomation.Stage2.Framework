@@ -26,6 +26,7 @@ public class EstimatedCostTests extends CommonConditions {
             "matches the price that was sent by email")
     public void checkEmailEstimateCost() {
         Instance testInstance = InstanceCreator.withoutEstimateCost();
+
         EmailEstimatePage emailEstimatePage = new GoogleCloudHomePage(driver).openPage().
                 search(SEARCH_QUERY).followLinkWithSearchResult().selectComputeEngine().fillComputeEngineForm(testInstance).
                 clickAddToEstimate().clickEmailEstimate();

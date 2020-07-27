@@ -19,4 +19,8 @@ public class Executor extends Helper {
     public static void scrollToElement(WebElement element) {
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", element);
     }
+
+    public static void openNewTab() {
+        javascriptExecutor.executeScript("window.open();");
+    }
 }

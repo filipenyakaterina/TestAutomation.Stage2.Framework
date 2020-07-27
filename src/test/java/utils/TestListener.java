@@ -45,7 +45,7 @@ public class TestListener implements ITestListener {
 
     }
 
-    public void saveScreenshot() {
+    private void saveScreenshot() {
         File screenCapture = ((TakesScreenshot) DriverSingleton
                 .getDriver())
                 .getScreenshotAs(OutputType.FILE);

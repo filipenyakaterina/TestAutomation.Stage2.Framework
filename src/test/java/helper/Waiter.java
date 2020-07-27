@@ -46,10 +46,10 @@ public class Waiter extends Helper {
     }
 
     public static void waitForFrame(String frameName) {
-        new WebDriverWait(driver, WAITING_PERIOD).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
+        driverWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
     }
 
     public static void waitForFrame(int frameNumber) {
-        new WebDriverWait(driver, WAITING_PERIOD).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameNumber));
+        driverWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameNumber));
     }
 }
