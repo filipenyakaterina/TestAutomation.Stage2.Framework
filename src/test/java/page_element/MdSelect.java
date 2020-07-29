@@ -4,6 +4,7 @@ import helper.Executor;
 import helper.Waiter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MdSelect {
     private WebElement select;
@@ -30,7 +31,7 @@ public class MdSelect {
     private void selectOption() {
         Executor.clickElement(option);
         Executor.clickElement(optionDiv);
-        Waiter.waitUntilElementToBeVisible(select);
+        Waiter.waitUntilAttributeAriaExpandedToBe(select,false);
     }
 
     public void selectByValue(String optionText) {
