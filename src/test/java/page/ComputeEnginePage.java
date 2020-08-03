@@ -1,15 +1,15 @@
 package page;
 
-import model.Instance;
 import helper.Executor;
 import helper.Waiter;
+import model.Instance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page_element.MdSelect;
+import utils.TestLogger;
 
 public class ComputeEnginePage extends AbstractPage {
-
     @FindBy(xpath = "//input[@name = 'quantity']")
     private WebElement numberOfInstances;
 
@@ -72,6 +72,7 @@ public class ComputeEnginePage extends AbstractPage {
         new MdSelect(datacenterLocation).selectByValue(instance.getDatacenterLocation());
         new MdSelect(committedUsage).selectByValue(instance.getCommittedUsage());
 
+        TestLogger.writeMessage("Compute Engine form filled");
         return new GoogleCloudPlatformPricingCalculatorPage(driver);
     }
 }

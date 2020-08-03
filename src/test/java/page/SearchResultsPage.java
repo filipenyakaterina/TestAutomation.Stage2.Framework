@@ -3,6 +3,7 @@ package page;
 import helper.Waiter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.TestLogger;
 
 public class SearchResultsPage extends AbstractPage {
     private final String searchQuery;
@@ -22,6 +23,7 @@ public class SearchResultsPage extends AbstractPage {
     public GoogleCloudPlatformPricingCalculatorPage followLinkWithSearchResult() {
         Waiter.waitUntilElementAppears(By.linkText(searchQuery));
         driver.findElement(By.linkText(searchQuery)).click();
+        TestLogger.writeMessage("Driver follows the first link with text " + searchQuery + " in search results");
         return new GoogleCloudPlatformPricingCalculatorPage(driver);
     }
 }

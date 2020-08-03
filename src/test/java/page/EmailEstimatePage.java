@@ -5,6 +5,7 @@ import helper.Switcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.TestLogger;
 
 public class EmailEstimatePage extends AbstractPage {
 
@@ -31,6 +32,7 @@ public class EmailEstimatePage extends AbstractPage {
     public PriceCalculationResult sendEmail(String emailValue) {
         email.sendKeys(emailValue);
         Executor.clickElement(sendEmailButton);
+        TestLogger.writeMessage("Send Email button was pressed.");
         return new PriceCalculationResult(driver);
     }
 }

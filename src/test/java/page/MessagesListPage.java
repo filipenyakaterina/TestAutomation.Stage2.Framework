@@ -6,6 +6,7 @@ import helper.Waiter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.TestLogger;
 
 public class MessagesListPage extends AbstractPage {
     private static final String COST_TITLE = "Estimated Monthly Cost:";
@@ -38,6 +39,7 @@ public class MessagesListPage extends AbstractPage {
         Waiter.waitUntilElementToBeVisible(message);
         Executor.clickElement(message);
         Waiter.waitUntilTextToBe(estimateCost, COST_TITLE);
+        TestLogger.writeMessage("Estimate cost was received from the email message.");
         return estimateCost.getText();
     }
 }

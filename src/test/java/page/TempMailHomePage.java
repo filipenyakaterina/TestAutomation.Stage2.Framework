@@ -6,6 +6,7 @@ import helper.Waiter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.TestLogger;
 
 public class TempMailHomePage extends AbstractPage {
     public static final String TEMP_MAIL_URL = "https://temp-mail.org";
@@ -28,6 +29,7 @@ public class TempMailHomePage extends AbstractPage {
         Waiter.waitUntilElementToBeVisible(emailAddress);
         Executor.scrollToElement(emailAddress);
         Waiter.waitUntilEmailInValueAppears(emailAddress);
+        TestLogger.writeMessage("Temp email address was received on " + TEMP_MAIL_URL);
         return emailAddress.getAttribute("value");
     }
 }
