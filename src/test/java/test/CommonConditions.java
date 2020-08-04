@@ -15,7 +15,7 @@ public class CommonConditions {
     protected WebDriver driver;
 
     @BeforeClass
-    public void setLogger(){
+    public static void setLogger(){
         System.getProperty("log4j.configurationFile", "log4j.xml");
     }
 
