@@ -22,6 +22,7 @@ public class TempMailHomePage extends AbstractPage {
         Switcher.openNewTab();
         Waiter.waitUntilNewWindowHandleAppear();
         Switcher.switchToNewTab(TEMP_MAIL_URL);
+        TestLogger.writeMessage("Page " + TEMP_MAIL_URL + " is opened");
         return this;
     }
 

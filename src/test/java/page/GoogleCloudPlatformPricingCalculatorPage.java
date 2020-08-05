@@ -20,10 +20,12 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     public GoogleCloudPlatformPricingCalculatorPage(WebDriver driver) {
         super(driver);
         Switcher.switchToFrame();
+        TestLogger.writeMessage("Page " + CALCULATOR_URL + " is opened");
     }
 
     public GoogleCloudPlatformPricingCalculatorPage openPage() {
         driver.get(CALCULATOR_URL);
+        TestLogger.writeMessage("Page " + CALCULATOR_URL + " is opened");
         return this;
     }
 
