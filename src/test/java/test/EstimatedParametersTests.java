@@ -14,7 +14,7 @@ public class EstimatedParametersTests extends CommonConditions {
         String vmClass = new GoogleCloudHomePage(driver).openPage().
                 search(SEARCH_QUERY).followLinkWithSearchResult().selectComputeEngine().
                 fillComputeEngineForm(testInstance).clickAddToEstimate().getVmClass();
-        Assert.assertTrue(testInstance.getMachineClass().toLowerCase().contains(ValueFormatter.getValueFromString(vmClass.toLowerCase())));
+        Assert.assertEquals(testInstance.getMachineClass().toLowerCase(), ValueFormatter.getValueFromString(vmClass.toLowerCase()));
     }
 
     @Test(description = "Check field 'Instance Type' after calculation price at the Google Cloud Platform Pricing Calculator")
@@ -23,7 +23,8 @@ public class EstimatedParametersTests extends CommonConditions {
         String instanceType = new GoogleCloudHomePage(driver).openPage().
                 search(SEARCH_QUERY).followLinkWithSearchResult().
                 selectComputeEngine().fillComputeEngineForm(testInstance).clickAddToEstimate().getInstanceType();
-        Assert.assertTrue(testInstance.getMachineType().toLowerCase().contains(ValueFormatter.getValueFromString(instanceType).toLowerCase()));
+        Assert.assertEquals(ValueFormatter.getFirstValueInLine(testInstance.getMachineType()).toLowerCase(),
+                ValueFormatter.getValueFromString(instanceType).toLowerCase());
     }
 
     @Test(description = "Check field 'Region' after calculation price at the Google Cloud Platform Pricing Calculator")
@@ -32,7 +33,8 @@ public class EstimatedParametersTests extends CommonConditions {
         String region = new GoogleCloudHomePage(driver).openPage().
                 search(SEARCH_QUERY).followLinkWithSearchResult().
                 selectComputeEngine().fillComputeEngineForm(testInstance).clickAddToEstimate().getRegion();
-        Assert.assertTrue(testInstance.getDatacenterLocation().toLowerCase().contains(ValueFormatter.getValueFromString(region).toLowerCase()));
+        Assert.assertEquals(ValueFormatter.getFirstValueInLine(testInstance.getDatacenterLocation()).toLowerCase(),
+                ValueFormatter.getValueFromString(region).toLowerCase());
     }
 
     @Test(description = "Check field 'Local SSD' after calculation price at the Google Cloud Platform Pricing Calculator")
@@ -41,7 +43,8 @@ public class EstimatedParametersTests extends CommonConditions {
         String localSSD = new GoogleCloudHomePage(driver).openPage().
                 search(SEARCH_QUERY).followLinkWithSearchResult().selectComputeEngine().fillComputeEngineForm(testInstance).
                 clickAddToEstimate().getLocalSSD();
-        Assert.assertTrue(localSSD.toLowerCase().contains(testInstance.getLocalSSD().toLowerCase()));
+        Assert.assertEquals(ValueFormatter.getLocalSSDValue(localSSD.toLowerCase()),
+                ValueFormatter.getLocalSSDValue(testInstance.getLocalSSD().toLowerCase()));
     }
 
     @Test(description = "Check field 'Commitment Term' after calculation price at the Google Cloud Platform Pricing Calculator")
@@ -51,6 +54,7 @@ public class EstimatedParametersTests extends CommonConditions {
                 search(SEARCH_QUERY).followLinkWithSearchResult().
                 selectComputeEngine().fillComputeEngineForm(testInstance).
                 clickAddToEstimate().getCommitmentTerm();
-        Assert.assertTrue(testInstance.getCommittedUsage().toLowerCase().contains(ValueFormatter.getValueFromString(commitmentTerm).toLowerCase()));
+        Assert.assertEquals(testInstance.getCommittedUsage().toLowerCase(),
+                ValueFormatter.getValueFromString(commitmentTerm).toLowerCase());
     }
 }
