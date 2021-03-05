@@ -36,9 +36,9 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         return new ComputeEnginePage(driver);
     }
 
-    public PriceCalculationResult clickAddToEstimate() {
+    public PriceCalculationResultPage clickAddToEstimate() {
         Executor.clickElement(addToEstimateButton);
         TestLogger.writeMessage("Add To Estimate button was pressed.");
-        return new PriceCalculationResult(driver);
+        return new PriceCalculationResultPage(driver);
     }
 }

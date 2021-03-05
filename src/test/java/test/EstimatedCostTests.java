@@ -19,7 +19,7 @@ public class EstimatedCostTests extends CommonConditions {
         String totalEstimateCost = new GoogleCloudHomePage(driver).openPage().
                 search(SEARCH_QUERY).followLinkWithSearchResult().
                 selectComputeEngine().fillComputeEngineForm(testInstance).
-                clickAddToEstimate().getTotalEstimateCost();
+                clickAddToEstimate().getEstimatedCost();
 
         Assert.assertEquals(CostFormatter.getCostFromString(totalEstimateCost),
                 CostFormatter.getCostFromString(testInstance.getEstimateCost()));

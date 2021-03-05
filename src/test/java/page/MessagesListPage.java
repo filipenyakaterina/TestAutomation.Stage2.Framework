@@ -39,7 +39,8 @@ public class MessagesListPage extends AbstractPage {
         Waiter.waitUntilElementToBeVisible(message);
         Executor.clickElement(message);
         Waiter.waitUntilTextToBe(estimateCost, COST_TITLE);
-        TestLogger.writeMessage("Estimate cost was received from the email message.");
-        return estimateCost.getText();
+        String estimateCostValue = estimateCost.getText();
+        TestLogger.writeMessage("String {" + estimateCostValue + "} was received from the email message.");
+        return estimateCostValue;
     }
 }

@@ -2,12 +2,15 @@ package page;
 
 import helper.Executor;
 import helper.Switcher;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.TestLogger;
 
-public class PriceCalculationResult extends AbstractPage {
+import java.util.Optional;
+
+public class PriceCalculationResultPage extends AbstractPage {
 
     @FindBy(xpath = "//md-card-content[@id = 'resultBlock']//div[contains(text(),'VM class')]")
     private WebElement vmClass;
@@ -18,14 +21,8 @@ public class PriceCalculationResult extends AbstractPage {
     @FindBy(xpath = "//md-card-content[@id = 'resultBlock']//div[contains(text(),'Region')]")
     private WebElement region;
 
-    @FindBy(xpath = "//md-card-content[@id = 'resultBlock']//div[contains(text(),'local SSD')]")
-    private WebElement localSSD;
-
     @FindBy(xpath = "//md-card-content[@id = 'resultBlock']//div[contains(text(),'Commitment term')]")
     private WebElement commitmentTerm;
-
-    @FindBy(xpath = "//md-card-content[@id = 'resultBlock']//b[contains(text(),'Total Estimated Cost')]")
-    private WebElement totalEstimateCost;
 
     @FindBy(xpath = "//md-card-content[@id='resultBlock']//button[@id='email_quote']")
     private WebElement emailEstimateButton;
@@ -33,7 +30,9 @@ public class PriceCalculationResult extends AbstractPage {
     @FindBy(xpath = "//md-card-content[@id='resultBlock']//b[contains(text(), 'Total Estimated Cost:')]")
     private WebElement estimateCost;
 
-    protected PriceCalculationResult(WebDriver driver) {
+    private final By localSSDLocator = By.xpath("//md-card-content[@id = 'resultBlock']//div[contains(text(),'local SSD')]");
+
+    protected PriceCalculationResultPage(WebDriver driver) {
         super(driver);
         if (!driver.getCurrentUrl().contains(GoogleCloudPlatformPricingCalculatorPage.CALCULATOR_URL)) {
             throw new IllegalStateException("This is not the Google Cloud Platform Pricing Calculator page!");
@@ -46,27 +45,42 @@ public class PriceCalculationResult extends AbstractPage {
     }
 
     public String getVmClass() {
-        return vmClass.getText();
+        String vmClassValue = vmClass.getText();
+        TestLogger.writeMessage("Field VM class on Estimate form has value " + vmClassValue);
+        return vmClassValue;
     }
 
     public String getInstanceType() {
-        return instanceType.getText();
+        String instanceTypeValue = instanceType.getText();
+        TestLogger.writeMessage("Field Instance Type on Estimate form has value " + instanceTypeValue);
+        return instanceTypeValue;
     }
 
     public String getRegion() {
-        return region.getText();
+        String regionValue = region.getText();
+        TestLogger.writeMessage("Field Region on Estimate form has value " + regionValue);
+        return regionValue;
     }
 
     public String getLocalSSD() {
-        return localSSD.getText();
+        String localSSDValue;
+
+        Optional<WebElement> optionalLocalSSD = driver.findElements(localSSDLocator).stream().findFirst();
+        if(optionalLocalSSD.isPresent()){
+            localSSDValue = optionalLocalSSD.get().getText();
+            TestLogger.writeMessage("Field Local SSD on Estimate form has value " + localSSDValue);
+        }
+        else {
+            localSSDValue = "";
+            TestLogger.writeMessage("Field Local SSD on Estimate form is absent");
+        }
+        return localSSDValue;
     }
 
     public String getCommitmentTerm() {
-        return commitmentTerm.getText();
-    }
-
-    public String getTotalEstimateCost() {
-        return totalEstimateCost.getText();
+        String commitmentTermValue = commitmentTerm.getText();
+        TestLogger.writeMessage("Field Commitment Term on Estimate form has value " + commitmentTermValue);
+        return commitmentTermValue;
     }
 
     public EmailEstimatePage clickEmailEstimate() {
@@ -76,7 +90,9 @@ public class PriceCalculationResult extends AbstractPage {
     }
 
     public String getEstimatedCost() {
-        return estimateCost.getText();
+        String estimateCostValue = estimateCost.getText();
+        TestLogger.writeMessage("Estimate result is " + estimateCostValue);
+        return estimateCostValue;
     }
 }
 

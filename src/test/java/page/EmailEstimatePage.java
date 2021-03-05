@@ -29,10 +29,10 @@ public class EmailEstimatePage extends AbstractPage {
         return this;
     }
 
-    public PriceCalculationResult sendEmail(String emailValue) {
+    public PriceCalculationResultPage sendEmail(String emailValue) {
         email.sendKeys(emailValue);
         Executor.clickElement(sendEmailButton);
         TestLogger.writeMessage("Send Email button was pressed.");
-        return new PriceCalculationResult(driver);
+        return new PriceCalculationResultPage(driver);
     }
 }
