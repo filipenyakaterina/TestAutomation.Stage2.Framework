@@ -19,7 +19,7 @@ public class DriverSingleton {
                     driver = new FirefoxDriver();
                     break;
                 default:
-                    WebDriverManager.chromedriver().setup();
+                    WebDriverManager.chromedriver().ignoreVersions("90").setup();
                     driver = new ChromeDriver();
                     break;
             }
